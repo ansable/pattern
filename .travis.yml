@@ -32,12 +32,6 @@ after_script:
   - pip install --quiet coveralls
   - coveralls
 
-branches:
-only:
-  - development
-
-notifications:
-  email: false
 
 # You can connect to MySQL/MariaDB using the username "travis" or "root" and a blank password.
 services:
