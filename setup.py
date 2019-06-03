@@ -146,7 +146,7 @@ setup(
         "scipy",
         "nltk",
         "python-docx",
-        "cherrypy == 1.10.0" if sys.version < "3" else "cherrypy",
+        "cherrypy >= 1.10.0" if sys.version < "3" else "cherrypy",
         "requests"
     ],
     zip_safe = False
