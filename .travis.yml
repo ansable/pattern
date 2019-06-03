@@ -18,6 +18,11 @@ before_install:
   - pip install --quiet pytest pytest-cov pytest-xdist chardet
 
 install:
+  #for handling Python 2.7. = specially for Travis Cl, shouldn't be relevant for anything else
+  - pip uninstall -y six
+  - pip install six>=1.11.0
+  - pip install tox
+  - pip install bandit
   - python setup.py install --quiet
   - pip freeze
   # Install and compile libsvm and liblinear
