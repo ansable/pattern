@@ -769,7 +769,7 @@ class _TestQuery(object):
             [(1, "john", 30, 2),
              (2, "jack", 20, 2)]),
           (dict(fields=["name", "gender.name"], relations=[db.relation("gender", "id", "gender")], sort=["persons.id"]),
-            "select persons.name, gender.name from `persons` left join `gender` on persons.gender=gender.id order by persons.id desc;",
+            "select persons.name, gender.name from `persons` left join `gender` on persons.gender=gender.id order by persons.id asc;",
             [("john", "male"),
              ("jack", "male"),
              ("jane", "female")]),
@@ -815,7 +815,7 @@ class _TestQuery(object):
 
     def test_xml(self):
         # Assert Query.xml dump.
-        v = self.db.persons.search(fields=["name", "gender.name"], sort=["persons.id"])
+        v = self.db.persons.search(fields=["name", "gender.name"], sort=["persons.name"])
         v.aliases["gender.name"] = "gender"
         self.db.link("persons", "gender", "gender", "id", join=db.LEFT)
         self.assertEqual(v.xml,
