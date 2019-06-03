@@ -807,9 +807,9 @@ class _TestQuery(object):
         self.assertEqual(v.SQL(),
             "select persons.name, gender.name as gender from `persons` left join `gender` on persons.gender=gender.id  order by persons.name asc;")
         self.assertEqual(v.rows(),
-            [('john', 'male'),
-             ('jack', 'male'),
-             ('jane', 'female')])
+            [('jack', 'male'),
+             ('jane', 'female'),
+             ('john', 'male')])
         print("pattern.db.Table.search()")
         print("pattern.db.Table.Query")
 
