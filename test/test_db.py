@@ -805,10 +805,10 @@ class _TestQuery(object):
         v.aliases["gender.name"] = "gender"
         self.db.link("persons", "gender", "gender", "id", join=db.LEFT)
         self.assertEqual(v.SQL(),
-            "select persons.name, gender.name as gender from `persons` left join `gender` on persons.gender=gender.id  order by persons.name asc;")
+            "select persons.name, gender.name as gender from `persons` left join `gender` on persons.gender=gender.id order by gender.name asc;")
         self.assertEqual(v.rows(),
-            [('jack', 'male'),
-             ('jane', 'female'),
+            [('jane', 'female'),
+             ('jack', 'male'),
              ('john', 'male')])
         print("pattern.db.Table.search()")
         print("pattern.db.Table.Query")
