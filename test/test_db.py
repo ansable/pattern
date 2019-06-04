@@ -769,7 +769,7 @@ class _TestQuery(object):
             [(1, "john", 30, 2),
              (2, "jack", 20, 2)]),
           (dict(fields=["name", "gender.name"], relations=[db.relation("gender", "id", "gender")]),
-            "select persons.name, gender.name from `persons` left join `gender` on persons.gender=gender.id;",
+            "select persons.name, gender.name from `persons` left join `gender` on persons.gender=gender.id desc;",
             [("john", "male"),
              ("jack", "male"),
              ("jane", "female")]),
