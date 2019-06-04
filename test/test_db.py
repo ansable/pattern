@@ -801,7 +801,7 @@ class _TestQuery(object):
             self.assertEqual(v.SQL(), sql)
             self.assertEqual(v.rows(), rows)
         # Assert Database.link() permanent relations.
-        v = self.db.persons.search(fields=["name", "gender.name"])
+        v = self.db.persons.search(fields=["name", "gender.name"], sort=["persons.id"])
         v.aliases["gender.name"] = "gender"
         self.db.link("persons", "gender", "gender", "id", join=db.LEFT)
         self.assertEqual(v.SQL(),
@@ -815,7 +815,7 @@ class _TestQuery(object):
 
     def test_xml(self):
         # Assert Query.xml dump.
-        v = self.db.persons.search(fields=["name", "gender.name"])
+        v = self.db.persons.search(fields=["name", "gender.name"], sort=["persons.id"])
         v.aliases["gender.name"] = "gender"
         self.db.link("persons", "gender", "gender", "id", join=db.LEFT)
         self.assertEqual(v.xml,
