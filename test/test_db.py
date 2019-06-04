@@ -768,8 +768,8 @@ class _TestQuery(object):
             "select persons.* from `persons` where persons.age<30 or persons.name='john';",
             [(1, "john", 30, 2),
              (2, "jack", 20, 2)]),
-          (dict(fields=["name", "gender.name"], relations=[db.relation("gender", "id", "gender")]),
-            "select persons.name, gender.name from `persons` left join `gender` on persons.gender=gender.id desc;",
+          (dict(fields=["name", "gender.name"], relations=[db.relation("gender", "id", "gender")], sort=["persons.id"]),
+            "select persons.name, gender.name from `persons` left join `gender` on persons.gender=gender.id order by persons.id asc;",
             [("john", "male"),
              ("jack", "male"),
              ("jane", "female")]),
@@ -805,7 +805,7 @@ class _TestQuery(object):
         v.aliases["gender.name"] = "gender"
         self.db.link("persons", "gender", "gender", "id", join=db.LEFT)
         self.assertEqual(v.SQL(),
-            "select persons.name, gender.name as gender from `persons` left join `gender` on persons.gender=gender.id;")
+            "select persons.name, gender.name as gender from `persons` left join `gender` on persons.gender=gender.id  order by persons.id asc;")
         self.assertEqual(v.rows(),
             [('john', 'male'),
              ('jack', 'male'),
