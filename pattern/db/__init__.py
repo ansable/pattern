@@ -23,7 +23,6 @@ import re
 import urllib
 import base64
 import json
-import mysqlclient
 
 if sys.version > "3":
     import csv as csvlib
