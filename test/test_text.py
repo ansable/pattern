@@ -93,7 +93,7 @@ class TestModel(unittest.TestCase):
         # Assert SLP language model.
         v = text.Model()
         for i in range(2):
-            v.train("black", "JJ", previous=("the", "DT"), next=("cat", "NN"))
+            v.train("blue", "JJ", previous=("the", "DT"), next=("cat", "NN"))
             v.train("on", "IN", previous=("sat", "VBD"), next=("the", "DT"))
         self.assertEqual("JJ", v.classify("yellow"))
         self.assertEqual("JJ", v.classify("white", previous=("a", "DT"), next=("cat", "NN")))
