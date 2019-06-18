@@ -11,6 +11,9 @@ from builtins import object, range, next
 
 import os
 import sys
+
+import numpy
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import unittest
 import time
@@ -18,13 +21,15 @@ import warnings
 
 from pattern import web
 
+
+
 try:
     PATH = os.path.dirname(os.path.realpath(__file__))
 except:
     PATH = ""
 
 #---------------------------------------------------------------------------------------------------
-
+numpy.random.seed(0)
 
 class TestCache(unittest.TestCase):
 

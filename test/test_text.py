@@ -10,6 +10,9 @@ from builtins import object, range
 
 import os
 import sys
+
+import numpy
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import unittest
 try:
@@ -23,6 +26,7 @@ from pattern import text
 
 #---------------------------------------------------------------------------------------------------
 
+numpy.random.seed(0)
 
 class TestLexicon(unittest.TestCase):
 
