@@ -11,7 +11,7 @@ from builtins import object, range
 import os
 import sys
 
-import numpy
+
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import unittest
@@ -23,10 +23,11 @@ except ImportError:
     from io import StringIO
 
 from pattern import text
-
+from random import seed
+seed(0)
 #---------------------------------------------------------------------------------------------------
 
-numpy.random.seed(0)
+
 
 class TestLexicon(unittest.TestCase):
 
